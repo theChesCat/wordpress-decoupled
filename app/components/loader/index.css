@@ -1,0 +1,28 @@
+@keyframes turnAround {
+    0% { transform: rotate(45deg); }
+    18% { transform: rotate(135deg); }
+    25% { transform: rotate(135deg); }
+    43% { transform: rotate(225deg); }
+    50% { transform: rotate(225deg); }
+    68% { transform: rotate(315deg); }
+    75% { transform: rotate(315deg); }
+    93% { transform: rotate(405deg); }
+    100% { transform: rotate(405deg); }
+}
+
+.loadingPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    transform: rotate(45deg);
+    background-color: #333333;
+    animation: turnAround 5s infinite
+}
