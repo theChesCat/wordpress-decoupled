@@ -1,62 +1,57 @@
 /* global Headers, fetch, console */
 
-import Constants from './Constants'
+import Config from './../config'
 
 class Api {
 
-    constructor() {
-        this.baseUrl = Constants.WORDPRESS_URL + Constants.WORDPRESS_ID
+    constructor () {
+        this.baseUrl = Config.path
     }
 
-    fetchAllPosts() {
-        var postsUrl = this.baseUrl + '/posts/'
-        var request = {
-            method: 'GET',
-            headers: new Headers(),
-            mode: 'cors',
-            cache: 'default'
+    fetchSiteInfos () {
+        const callback = this._formatInfos
+        return this._fetchData('/', callback)
+    }
+
+    fetchAllPosts () {
+        const callback = this._formatPosts.bind(this)
+        return this._fetchData('/posts/', callback)
+    }
+
+    fetchAllTags () {
+        const callback = this._formatTags.bind(this)
+        return this._fetchData('/tags/', callback)
+    }
+
+    _formatInfos (json) {
+        return json
+    }
+
+    _formatPosts (json) {
+        const data = json.posts
+        if (!data) {
+            return {}
         }
 
-        return fetch(postsUrl, request).then(response => {
-            return response.json().then(json => {
-                return this.formatPosts(json.posts)
-            })
-        }).catch(error => {
-            console.log('app/flux/Api - There was an error when fetching Wordpress posts: ' + error.message)
-        })
-    }
-
-    fetchAllTags() {
-        var tagsUrl = this.baseUrl + '/tags/'
-        var request = {
-            method: 'GET',
-            headers: new Headers(),
-            mode: 'cors',
-            cache: 'default'
-        }
-
-        return fetch(tagsUrl, request).then(response => {
-            return response.json().then(json => {
-                return this.formatTags(json.tags)
-            })
-        }).catch(error => {
-            console.log('app/flux/Api - There was an error when fetching Wordpress tags: ' + error.message)
-        })
-    }
-
-    formatPosts(data) {
         return data.map(post => {
             return {
                 id: post.ID,
                 slug: post.slug,
                 thumbnail: post.featured_image,
                 title: post.title,
-                tags: this.formatTags(post.tags)
+                tags: this._formatTags(post.tags),
+                content: post.content,
+                excerpt: post.excerpt
             }
         })
     }
 
-    formatTags(data) {
+    _formatTags (json) {
+        const data = json.tags
+        if (!data) {
+            return {}
+        }
+
         const rawTags = Object.keys(data).map(key => {
             return data[key]
         })
@@ -70,6 +65,24 @@ class Api {
         })
 
         return tags
+    }
+
+    _fetchData (path, callback) {
+        var url = this.baseUrl + path
+        var request = {
+            method: 'GET',
+            headers: new Headers(),
+            mode: 'cors',
+            cache: 'default'
+        }
+
+        return fetch(url, request).then(response => {
+            return response.json().then(json => {
+                return callback(json)
+            })
+        }).catch(error => {
+            console.log('app/flux/Api - There was an error when fetching Wordpress ' + path + ': ' + error.message)
+        })
     }
 }
 

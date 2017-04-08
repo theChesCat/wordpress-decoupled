@@ -7,7 +7,10 @@ export default class Post extends React.Component {
 
         return (
             <div className={styles.post} onClick={this.onClick.bind(this)}>
-                <div className={styles.name}>{post.title}</div>
+                <img src={post.thumbnail} className={styles.image} />
+                <div className={styles.text}>
+                    <div className={styles.title}>{post.title}</div>
+                </div>
             </div>
         )
     }

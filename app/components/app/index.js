@@ -8,10 +8,13 @@ import Views from './views'
 export default class App extends React.Component {
 
     render () {
+        const infos = this.props.infos
+        const posts = this.props.posts
+
         return (
             <div className={styles.base}>
-                <Header />
-                <Views posts={this.props.posts} />
+                <Header name={infos.name} description={infos.description} />
+                <Views posts={posts} />
                 <Navigation />
             </div>
         )
@@ -19,5 +22,6 @@ export default class App extends React.Component {
 }
 
 App.propTypes = {
+    infos: React.PropTypes.object,
     posts: React.PropTypes.array
 }

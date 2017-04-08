@@ -9,14 +9,19 @@ import AppDispatcher from './AppDispatcher'
 class Store extends EventEmitter {
 
     loadAssets () {
-        const promises = [Api.fetchAllPosts(), Api.fetchAllTags()]
+        const promises = [Api.fetchSiteInfos(), Api.fetchAllPosts(), Api.fetchAllTags()]
 
         Promise.all(promises).then(response => {
-            this.posts = response[0]
-            this.tags = response[1]
+            this.infos = response[0]
+            this.posts = response[1]
+            this.tags = response[2]
 
             this.emitChange()
         })
+    }
+
+    getInfos () {
+        return this.infos
     }
 
     getPosts () {

@@ -1,5 +1,7 @@
 .showcase {
-    display: inline-block;
+    display: flex;
     margin: 40px 0;
+    width: 100%;
+    justify-content: center;
     text-align: center;
 }
