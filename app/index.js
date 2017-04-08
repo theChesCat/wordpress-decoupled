@@ -6,28 +6,50 @@ import ReactDOM from 'react-dom'
 import Actions from './flux/Actions'
 import Store from './flux/Store'
 import Loader from './components/loader'
-import Base from './components/base'
+import App from './components/app'
 import './global.css'
 
-class Index {
+export default class Index extends React.Component {
 
-    init () {
-        Store.addChangeListener(this.onAssetsLoaded)
-        Actions.loadAssets()
-        this.displayLoading()
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            loadingDone: false,
+            articles: []
+        }
     }
 
-    displayLoading () {
-        ReactDOM.render(<Loader />, document.getElementById('loader'))
+    componentWillMount () {
+        Store.addChangeListener(this.onAssetsLoaded.bind(this))
+        Actions.loadAssets()
+    }
+
+    componentWillUnmount () {
+        Store.removeChangeListener(this.onAssetsLoaded.bind(this))
+    }
+
+    render () {
+        if (this.state.loadingDone) {
+            // If Wordpress data is loaded, rendering the App
+            return (
+                <App articles={this.state.articles} />
+            )
+        } else {
+            // If not, rendering the loader
+            return (
+                <Loader />
+            )
+        }
     }
 
     onAssetsLoaded () {
-        document.getElementById('loader').remove()
-        const articles = Store.getArticles()
-        ReactDOM.render(<Base articles={articles} />, document.getElementById('app'))
+        this.setState({
+            loadingDone: true,
+            articles: Store.getArticles()
+        })
     }
+
 }
 
-const index = new Index()
-index.init()
-export default index
+ReactDOM.render(<Index />, document.getElementById('app'))

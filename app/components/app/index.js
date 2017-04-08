@@ -5,7 +5,7 @@ import Header from './header'
 import Navigation from './navigation'
 import Views from './views'
 
-export default class Base extends React.Component {
+export default class App extends React.Component {
 
     render () {
         return (
@@ -18,6 +18,6 @@ export default class Base extends React.Component {
     }
 }
 
-Base.propTypes = {
+App.propTypes = {
     articles: React.PropTypes.array
 }
