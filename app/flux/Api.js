@@ -19,7 +19,7 @@ class Api {
 
         return fetch(postsUrl, request).then(response => {
             return response.json().then(json => {
-                return this.formatArticles(json.posts)
+                return this.formatPosts(json.posts)
             })
         }).catch(error => {
             console.log('app/flux/Api - There was an error when fetching Wordpress posts: ' + error.message)
@@ -44,14 +44,14 @@ class Api {
         })
     }
 
-    formatArticles(data) {
-        return data.map(article => {
+    formatPosts(data) {
+        return data.map(post => {
             return {
-                id: article.ID,
-                slug: article.slug,
-                thumbnail: article.featured_image,
-                title: article.title,
-                tags: this.formatTags(article.tags)
+                id: post.ID,
+                slug: post.slug,
+                thumbnail: post.featured_image,
+                title: post.title,
+                tags: this.formatTags(post.tags)
             }
         })
     }

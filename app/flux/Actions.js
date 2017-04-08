@@ -16,9 +16,9 @@ class Actions {
         })
     }
 
-    fetchArticles(text) {
+    fetchPosts(text) {
         AppDispatcher.dispatch({
-            actionType: Constants.FETCH_ARTICLES,
+            actionType: Constants.FETCH_POSTS,
             text: text
         })
     }

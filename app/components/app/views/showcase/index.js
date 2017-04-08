@@ -1,17 +1,17 @@
 import React from 'react'
 import styles from './index.css'
 
-import Article from './article'
+import Post from './post'
 
 export default class Showcase extends React.Component {
     render () {
-        const articles = this.props.articles
+        const posts = this.props.posts
 
         return (
             <div className={styles.showcase}>
                 {
-                    articles.map((article, id) => {
-                        return <Article key={id} article={article} onArticleClick={this.props.onArticleClick} />
+                    posts.map((post, id) => {
+                        return <Post key={id} post={post} onPostClick={this.props.onPostClick} />
                     })
                 }
             </div>
@@ -20,6 +20,6 @@ export default class Showcase extends React.Component {
 }
 
 Showcase.propTypes = {
-    articles: React.PropTypes.array,
-    onArticleClick: React.PropTypes.func
+    posts: React.PropTypes.array,
+    onPostClick: React.PropTypes.func
 }

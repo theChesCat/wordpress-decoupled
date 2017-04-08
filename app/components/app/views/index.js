@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './index.css'
 
 import Showcase from './showcase'
-import Article from './article'
+import Post from './post'
 
 export default class Views extends React.Component {
 
@@ -21,30 +21,30 @@ export default class Views extends React.Component {
 
     displayView () {
         const viewName = this.state.viewName
-        const articles = this.props.articles
+        const posts = this.props.posts
 
         if (viewName === 'showcase') {
-            return ( <Showcase articles={articles} onArticleClick={this.onArticleClick.bind(this)} /> )
-        } else if (viewName === 'article') {
-            const article = this.getArticleFromId(this.state.articleId)
-            return ( <Article article={article} /> )
+            return ( <Showcase posts={posts} onPostClick={this.onPostClick.bind(this)} /> )
+        } else if (viewName === 'post') {
+            const post = this.getPostFromId(this.state.postId)
+            return ( <Post post={post} /> )
         }
     }
 
-    getArticleFromId (id) {
-        return this.articles.filter(article => {
-            return article.id === id
+    getPostFromId (id) {
+        return this.posts.filter(post => {
+            return post.id === id
         })
     }
 
-    onArticleClick (articleId) {
+    onPostClick (postId) {
         this.setState({
-            viewName: 'article',
-            articleId: articleId
+            viewName: 'post',
+            postId: postId
         })
     }
 }
 
 Views.propTypes = {
-    articles: React.PropTypes.array
+    posts: React.PropTypes.array
 }

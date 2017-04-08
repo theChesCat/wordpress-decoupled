@@ -11,7 +11,7 @@ export default class App extends React.Component {
         return (
             <div className={styles.base}>
                 <Header />
-                <Views articles={this.props.articles} />
+                <Views posts={this.props.posts} />
                 <Navigation />
             </div>
         )
@@ -19,5 +19,5 @@ export default class App extends React.Component {
 }
 
 App.propTypes = {
-    articles: React.PropTypes.array
+    posts: React.PropTypes.array
 }

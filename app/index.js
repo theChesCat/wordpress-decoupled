@@ -16,7 +16,7 @@ export default class Index extends React.Component {
 
         this.state = {
             loadingDone: false,
-            articles: []
+            posts: []
         }
     }
 
@@ -33,7 +33,7 @@ export default class Index extends React.Component {
         if (this.state.loadingDone) {
             // If Wordpress data is loaded, rendering the App
             return (
-                <App articles={this.state.articles} />
+                <App posts={this.state.posts} />
             )
         } else {
             // If not, rendering the loader
@@ -46,7 +46,7 @@ export default class Index extends React.Component {
     onAssetsLoaded () {
         this.setState({
             loadingDone: true,
-            articles: Store.getArticles()
+            posts: Store.getPosts()
         })
     }
 
