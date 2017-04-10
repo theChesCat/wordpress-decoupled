@@ -13,6 +13,7 @@ module.exports = {
         path: path.resolve('dist'),
         filename: 'index.js'
     },
+    devtool: 'source-map',
     module: {
         loaders: [
             {

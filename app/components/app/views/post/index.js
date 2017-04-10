@@ -1,18 +1,20 @@
 import React from 'react'
-import styles from './index.css'
+import Store from './../../../../flux/Store'
+import Post from './Post.js'
 
-export default class Post extends React.Component {
+export default class PostContainer extends React.Component {
+
     render () {
-        const post = this.props.post
+        const slug = this.props.match.params.postSlug
+        const post =  Store.getPostBySlug(slug)
 
         return (
-            <div className={styles.post}>
-                <div className={styles.title}>{post.title}</div>
-            </div>
+            <Post post={post} />
         )
     }
+
 }
 
-Post.propTypes = {
-    post: React.PropTypes.object
+PostContainer.propTypes = {
+    match: React.PropTypes.object
 }

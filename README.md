@@ -22,7 +22,7 @@ https://developer.wordpress.com/docs/api/
 ### What's in :
 
 [webpack](https://github.com/webpack/webpack), [webpack-dev-server](https://github.com/webpack/webpack-dev-server) and [Babel](https://babeljs.io/)
-[React](https://github.com/facebook/react) and [Flux](https://github.com/facebook/flux)
+[React](https://github.com/facebook/react), [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start) and [Flux](https://github.com/facebook/flux)
 [Eslint](https://github.com/eslint/eslint) and [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
 
 

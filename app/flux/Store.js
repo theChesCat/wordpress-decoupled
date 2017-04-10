@@ -28,6 +28,12 @@ class Store extends EventEmitter {
         return this.posts
     }
 
+    getPostBySlug (slug) {
+        return this.posts.find((post) => {
+            return post.slug === slug
+        })
+    }
+
     getTags () {
         return this.tags
     }

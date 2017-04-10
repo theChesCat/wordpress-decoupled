@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './index.css'
-
 import Post from './post'
+
+import styles from './index.css'
 
 export default class Showcase extends React.Component {
     render () {
@@ -11,7 +11,7 @@ export default class Showcase extends React.Component {
             <div className={styles.showcase}>
                 {
                     posts.map((post, id) => {
-                        return <Post key={id} post={post} onPostClick={this.props.onPostClick} />
+                        return <Post key={id} post={post} />
                     })
                 }
             </div>
@@ -20,6 +20,5 @@ export default class Showcase extends React.Component {
 }
 
 Showcase.propTypes = {
-    posts: React.PropTypes.array,
-    onPostClick: React.PropTypes.func
+    posts: React.PropTypes.array
 }

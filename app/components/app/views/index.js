@@ -1,48 +1,28 @@
 import React from 'react'
-import styles from './index.css'
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
 
 import Showcase from './showcase'
-import Post from './post'
+import PostContainer from './post'
+import styles from './index.css'
 
 export default class Views extends React.Component {
 
-    constructor (props) {
-        super(props)
-        this.state = { viewName: 'showcase' } // Todo: put this in a constant
-    }
-
     render () {
+        const posts = this.props.posts
+
         return (
-            <div className={styles.views}>
-                { this.displayView() }
-            </div>
+            <Router>
+                <div className={styles.views}>
+                    <Route exact path="/" component={() => (<Showcase posts={posts} />)} />
+                    <Route path="/posts/:postSlug" component={PostContainer} />
+                </div>
+            </Router>
         )
     }
 
-    displayView () {
-        const viewName = this.state.viewName
-        const posts = this.props.posts
-
-        if (viewName === 'showcase') {
-            return ( <Showcase posts={posts} onPostClick={this.onPostClick.bind(this)} /> )
-        } else if (viewName === 'post') {
-            const post = this.getPostFromId(this.state.postId)
-            return ( <Post post={post} /> )
-        }
-    }
-
-    getPostFromId (id) {
-        return this.posts.filter(post => {
-            return post.id === id
-        })
-    }
-
-    onPostClick (postId) {
-        this.setState({
-            viewName: 'post',
-            postId: postId
-        })
-    }
 }
 
 Views.propTypes = {
