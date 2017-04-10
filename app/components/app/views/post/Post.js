@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './index.css'
+import styles from 'components/app/views/post/index.css'
 
 export default class Post extends React.Component {
 

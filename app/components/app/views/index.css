@@ -1,6 +1,0 @@
-.views {
-    display: flex;
-    padding: 0 60px;
-    height: calc(100% - 30px);
-    overflow: scroll;
-}

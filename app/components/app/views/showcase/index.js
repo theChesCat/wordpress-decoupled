@@ -1,24 +1,14 @@
 import React from 'react'
-import Post from './post'
 
-import styles from './index.css'
+import Store from 'flux/Store'
+import Showcase from 'components/app/views/showcase/Showcase'
 
-export default class Showcase extends React.Component {
+export default class ShowcaseComponent extends React.Component {
     render () {
-        const posts = this.props.posts
+        const posts = Store.getPosts()
 
         return (
-            <div className={styles.showcase}>
-                {
-                    posts.map((post, id) => {
-                        return <Post key={id} post={post} />
-                    })
-                }
-            </div>
+            <Showcase posts={posts} />
         )
     }
-}
-
-Showcase.propTypes = {
-    posts: React.PropTypes.array
 }

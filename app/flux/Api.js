@@ -1,11 +1,11 @@
 /* global Headers, fetch, console */
 
-import Config from './../config'
+import config from 'config'
 
 class Api {
 
     constructor () {
-        this.baseUrl = Config.path
+        this.baseUrl = config.path
     }
 
     fetchSiteInfos () {
@@ -15,7 +15,7 @@ class Api {
 
     fetchAllPosts () {
         const callback = this._formatPosts.bind(this)
-        return this._fetchData('/posts/', callback)
+        return this._fetchData('/posts?order=ASC', callback)
     }
 
     fetchAllTags () {

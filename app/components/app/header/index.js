@@ -1,15 +1,18 @@
 import React from 'react'
-import styles from './index.css'
 
-export default class Header extends React.Component {
+import Store from 'flux/Store'
+import Header from 'components/app/header/Header'
+
+export default class HeaderContainer extends React.Component {
+
     render () {
+        const infos = Store.getInfos()
+
         return (
-            <div className={styles.header}>
-                <div className={styles.title}>{this.props.name}</div>
-                <div className={styles.description}>{this.props.description}</div>
-            </div>
+            <Header name={infos.name} description={infos.description} />
         )
     }
+
 }
 
 Header.propTypes = {

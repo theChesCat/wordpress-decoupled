@@ -1,27 +1,28 @@
 import React from 'react'
-import styles from './index.css'
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
 
-import Header from './header'
-import Navigation from './navigation'
-import Views from './views'
+import Header from 'components/app/header'
+import Showcase from 'components/app/views/showcase'
+import PostContainer from 'components/app/views/post'
+
+import styles from 'components/app/index.css'
 
 export default class App extends React.Component {
 
     render () {
-        const infos = this.props.infos
-        const posts = this.props.posts
-
         return (
-            <div className={styles.base}>
-                <Header name={infos.name} description={infos.description} />
-                <Views posts={posts} />
-                <Navigation />
-            </div>
+            <Router>
+                <div className={styles.base}>
+                    <Header />
+                    <div className={styles.views}>
+                        <Route exact path="/" component={Showcase} />
+                        <Route path="/posts/:postSlug" component={PostContainer} />
+                    </div>
+                </div>
+            </Router>
         )
     }
-}
-
-App.propTypes = {
-    infos: React.PropTypes.object,
-    posts: React.PropTypes.array
 }

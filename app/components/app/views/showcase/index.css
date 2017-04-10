@@ -1,5 +1,6 @@
 .showcase {
     display: flex;
+    flex-wrap: wrap;
     margin: 40px 0;
     width: 100%;
     justify-content: center;

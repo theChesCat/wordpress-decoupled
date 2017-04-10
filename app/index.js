@@ -3,11 +3,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Actions from './flux/Actions'
-import Store from './flux/Store'
-import Loader from './components/loader'
-import App from './components/app'
-import './global.css'
+import Actions from 'flux/Actions'
+import Store from 'flux/Store'
+import Loader from 'components/loader'
+import App from 'components/app'
+import 'global.css'
 
 export default class Index extends React.Component {
 
@@ -33,7 +33,7 @@ export default class Index extends React.Component {
         if (this.state.loadingDone) {
             // If Wordpress data is loaded, rendering the App
             return (
-                <App infos={this.state.infos} posts={this.state.posts} />
+                <App />
             )
         } else {
             // If not, rendering the loader
@@ -45,9 +45,7 @@ export default class Index extends React.Component {
 
     onAssetsLoaded () {
         this.setState({
-            loadingDone: true,
-            infos: Store.getInfos(),
-            posts: Store.getPosts()
+            loadingDone: true
         })
     }
 

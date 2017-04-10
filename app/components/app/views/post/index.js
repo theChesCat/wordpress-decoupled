@@ -1,6 +1,6 @@
 import React from 'react'
-import Store from './../../../../flux/Store'
-import Post from './Post.js'
+import Store from 'flux/Store'
+import Post from 'components/app/views/post/Post'
 
 export default class PostContainer extends React.Component {
 

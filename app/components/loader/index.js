@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './index.css'
+import styles from 'components/loader/index.css'
 
 export default class Base extends React.Component {
 

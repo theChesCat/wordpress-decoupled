@@ -2,9 +2,9 @@
 
 import EventEmitter from 'events'
 
-import Api from './Api'
-import Constants from './Constants'
-import AppDispatcher from './AppDispatcher'
+import Api from 'flux/Api'
+import Constants from 'flux/Constants'
+import AppDispatcher from 'flux/AppDispatcher'
 
 class Store extends EventEmitter {
 

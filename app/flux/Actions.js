@@ -1,5 +1,5 @@
-import Constants from './Constants'
-import AppDispatcher from './AppDispatcher'
+import Constants from 'flux/Constants'
+import AppDispatcher from 'flux/AppDispatcher'
 
 class Actions {
 
