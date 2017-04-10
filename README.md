@@ -1,6 +1,6 @@
 # Wordpress decoupled test project
 
-### Disclamer :
+## Disclamer :
 
 Using Wordpress as a Decoupled / Headless CMS is not the easiest solution, nor is it the most logical one.
 Services such as [Contentful](https://www.contentful.com/) or [Built.io](https://www.built.io/) do that just fine.
@@ -8,7 +8,8 @@ Services such as [Contentful](https://www.contentful.com/) or [Built.io](https:/
 However, if you want, *if you really really want*, to use Wordpress, or if you just want to avoid using a SaaS, and to benefit from an open source project and keep your data on your own server, it might be for you.
 
 
-### About this project :
+
+## About this project :
 
 This project is just a test giving an example of what a decoupled CMS can look like, using Wordpress (for the CMS part) REST API, ReactJS and Flux.
 
@@ -19,14 +20,18 @@ https://developer.wordpress.org/rest-api/
 https://developer.wordpress.com/docs/api/
 
 
-### What's in :
+
+## What's in :
 
 [webpack](https://github.com/webpack/webpack), [webpack-dev-server](https://github.com/webpack/webpack-dev-server) and [Babel](https://babeljs.io/)
+
 [React](https://github.com/facebook/react), [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start) and [Flux](https://github.com/facebook/flux)
+
 [Eslint](https://github.com/eslint/eslint) and [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
 
 
-### Workaround :
+
+## Workaround :
 
 #### 1. Clone this repository
 
@@ -49,5 +54,12 @@ Locate the `config.sample.js` `in your_front_directory_path/app` , copy and rena
 
 Go to your front-end directory, and launch a
 ```
+$ yarn install
 $ yarn start
+```
+
+or
+```
+$ npm install
+$ npm start
 ```
