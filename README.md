@@ -1,5 +1,7 @@
 # Wordpress decoupled test project
 
+Example at http://paloma.sedeau.com/wordpress_decoupled/
+
 ## Disclamer :
 
 Using Wordpress as a Decoupled / Headless CMS is not the easiest solution, nor is it the most logical one.
@@ -63,3 +65,14 @@ or
 $ npm install
 $ npm start
 ```
+
+run
+```
+$ yarn build
+```
+of
+```
+$ npm build
+```
+
+to get a production build

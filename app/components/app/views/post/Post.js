@@ -8,7 +8,9 @@ export default class Post extends React.Component {
 
         return (
             <div className={styles.post}>
-                <div className={styles.title}>{post.title}</div>
+                <div className={styles.article}>
+                    <div className={styles.title}>{post.title}</div>
+                </div>
             </div>
         )
     }

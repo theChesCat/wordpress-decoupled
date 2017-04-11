@@ -1,7 +1,15 @@
+.post {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .article {
+    width: 100%;
+    max-width: 800px;
 
 }
 
 .title {
-    
+
 }
