@@ -18,15 +18,17 @@ export default class Index extends React.Component {
             loadingDone: false,
             posts: []
         }
+
+        this.onAssetsLoaded = this.onAssetsLoaded.bind(this)
     }
 
     componentWillMount () {
-        Store.addChangeListener(this.onAssetsLoaded.bind(this))
+        Store.addChangeListener(this.onAssetsLoaded)
         Actions.loadAssets()
     }
 
     componentWillUnmount () {
-        Store.removeChangeListener(this.onAssetsLoaded.bind(this))
+        Store.removeChangeListener(this.onAssetsLoaded)
     }
 
     render () {

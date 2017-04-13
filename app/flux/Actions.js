@@ -1,27 +1,14 @@
 import Constants from 'flux/Constants'
-import AppDispatcher from 'flux/AppDispatcher'
+import Dispatcher from 'flux/Dispatcher'
 
 class Actions {
 
     loadAssets() {
-        AppDispatcher.dispatch({
+        Dispatcher.dispatch({
             actionType: Constants.LOAD_ASSETS
         })
     }
 
-    fetchTags(text) {
-        AppDispatcher.dispatch({
-            actionType: Constants.FETCH_TAGS,
-            text: text
-        })
-    }
-
-    fetchPosts(text) {
-        AppDispatcher.dispatch({
-            actionType: Constants.FETCH_POSTS,
-            text: text
-        })
-    }
 }
 
 const instance = new Actions()

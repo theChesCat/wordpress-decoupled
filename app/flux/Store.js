@@ -4,42 +4,36 @@ import EventEmitter from 'events'
 
 import Api from 'flux/Api'
 import Constants from 'flux/Constants'
-import AppDispatcher from 'flux/AppDispatcher'
+import AppDispatcher from 'flux/Dispatcher'
+
+var _infos = {}
+var _posts = {}
 
 class Store extends EventEmitter {
 
     loadAssets () {
-        const promises = [Api.fetchSiteInfos(), Api.fetchAllPosts(), Api.fetchAllTags()]
+        const promises = [Api.fetchSiteInfos(), Api.fetchAllPosts()]
 
         Promise.all(promises).then(response => {
-            this.infos = response[0]
-            this.posts = response[1]
-            this.tags = response[2]
+            _infos = response[0]
+            _posts = response[1]
 
             this.emitChange()
         })
     }
 
     getInfos () {
-        return this.infos
+        return _infos
     }
 
     getPosts () {
-        return this.posts
+        return _posts
     }
 
     getPostBySlug (slug) {
-        return this.posts.find((post) => {
+        return _posts.find((post) => {
             return post.slug === slug
         })
-    }
-
-    getTags () {
-        return this.tags
-    }
-
-    isReady () {
-        return this.posts && this.tags
     }
 
     emitChange () {
