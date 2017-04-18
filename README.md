@@ -31,6 +31,8 @@ https://developer.wordpress.com/docs/api/
 
 [Eslint](https://github.com/eslint/eslint) and [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
 
+[Jest](https://facebook.github.io/jest/) tests
+
 
 
 ## Workaround :
@@ -70,9 +72,18 @@ run
 ```
 $ yarn build
 ```
-of
+or
 ```
 $ npm build
+```
+
+launch a
+```
+$ yarn test
+```
+or
+```
+$ npm test
 ```
 
 to get a production build
