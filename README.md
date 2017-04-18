@@ -56,7 +56,7 @@ Locate the `config.sample.js` `in your_front_directory_path/app` , copy and rena
 
 #### 4. You're good to go
 
-Go to your front-end directory, and launch a
+To run a development server :
 ```
 $ yarn install
 $ yarn start
@@ -68,7 +68,7 @@ $ npm install
 $ npm start
 ```
 
-run
+To get a production build :
 ```
 $ yarn build
 ```
@@ -77,7 +77,7 @@ or
 $ npm build
 ```
 
-launch a
+To launch tests :
 ```
 $ yarn test
 ```
@@ -85,5 +85,3 @@ or
 ```
 $ npm test
 ```
-
-to get a production build
