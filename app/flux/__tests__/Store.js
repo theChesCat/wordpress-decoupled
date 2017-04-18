@@ -58,7 +58,7 @@ describe ('Store', () => {
         expect(Store.getPostBySlug(_mockedPosts[0].slug)).toEqual(_mockedPosts[0])
     })
 
-    it ('should emit change', () => {
+    it ('should emit change if event is added, or not if event is removed', () => {
         let triggered = false
         const callback = function () {
             triggered = true
@@ -67,14 +67,8 @@ describe ('Store', () => {
         _dispatchReceiveContent()
 
         expect(triggered).toEqual(true)
-    })
 
-    it ('should not emit change if event is removed', () => {
-        let triggered = false
-        const callback = function () {
-            triggered = true
-        }
-        Store.addChangeListener(callback)
+        triggered = false
         Store.removeChangeListener(callback)
         _dispatchReceiveContent()
 
