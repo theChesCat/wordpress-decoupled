@@ -1,5 +1,6 @@
-/* global Headers, fetch, console */
+/* global Headers, fetch, Promise, console */
 
+import Actions from 'flux/Actions'
 import config from 'config'
 
 const _baseUrl = config.path
@@ -67,6 +68,19 @@ function _fetchData (path, callback) {
 }
 
 class Api {
+
+    fetchContent () {
+        const promises = [this.fetchSiteInfos(), this.fetchAllPosts()]
+
+        Promise.all(promises).then(response => {
+            const content = {
+                infos: response[0],
+                posts: response[1]
+            }
+
+            Actions.receiveContent(content)
+        })
+    }
 
     fetchSiteInfos () {
         const callback = _formatInfos

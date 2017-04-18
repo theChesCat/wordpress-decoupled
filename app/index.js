@@ -24,7 +24,7 @@ export default class Index extends React.Component {
 
     componentWillMount () {
         Store.addChangeListener(this.onAssetsLoaded)
-        Actions.loadAssets()
+        Actions.fetchContent()
     }
 
     componentWillUnmount () {

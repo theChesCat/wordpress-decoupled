@@ -1,8 +1,5 @@
-/* global Promise */
-
 import EventEmitter from 'events'
 
-import Api from 'flux/Api'
 import Constants from 'flux/Constants'
 import AppDispatcher from 'flux/Dispatcher'
 
@@ -11,19 +8,16 @@ var _posts = {}
 
 class Store extends EventEmitter {
 
-    loadAssets () {
-        const promises = [Api.fetchSiteInfos(), Api.fetchAllPosts()]
-
-        Promise.all(promises).then(response => {
-            _infos = response[0]
-            _posts = response[1]
-
-            this.emitChange()
-        })
+    setInfos (data) {
+        _infos = Object.assign({}, data)
     }
 
     getInfos () {
         return _infos
+    }
+
+    setPosts (data) {
+        _posts = data.slice()
     }
 
     getPosts () {
@@ -51,10 +45,12 @@ class Store extends EventEmitter {
 
 const store = new Store()
 
-store.dispatcherIndex = AppDispatcher.register(function(action) {
+store.dispatcherIndex = AppDispatcher.register(function (action) {
     switch (action.actionType) {
-    case Constants.LOAD_ASSETS :
-        store.loadAssets()
+    case Constants.RECEIVE_CONTENT :
+        store.setInfos(action.data.infos)
+        store.setPosts(action.data.posts)
+        store.emitChange()
     }
 
     return true
