@@ -51,12 +51,12 @@ Just create a theme with an index.php file in it, containing this line :
 
 #### 3. Add your Wordpress site path
 
-Locate the `config.sample.js` `in your_front_directory_path/app` , copy and rename it `config.sample.js` and change the path to your own.
+Locate the `config.sample.js` `in your_front_directory_path/app` , copy and rename it `config.js` and change the path to your own.
 
 
 #### 4. You're good to go
 
-To run a development server :
+To launch a development server :
 ```
 $ yarn install
 $ yarn start
@@ -77,7 +77,7 @@ or
 $ npm build
 ```
 
-To launch tests :
+To run tests :
 ```
 $ yarn test
 ```
